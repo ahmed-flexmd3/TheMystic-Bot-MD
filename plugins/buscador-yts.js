@@ -20,7 +20,7 @@ const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
     const traductor = _translate.plugins.buscador_yts;
     const device = await getDevice(m.key.id);
     
-  if (!text) throw `⚠️ *${traductor.texto1}*`;
+  if (!text) throw `⚠️ *ما الذي تبحث عنه في يوتيوب*`;
     
   if (device !== 'desktop' || device !== 'web') {      
     
@@ -43,20 +43,27 @@ const handler = async (m, { conn, text, usedPrefix: prefijo }) => {
         {
           name: 'single_select',
           buttonParamsJson: JSON.stringify({
-            title: 'OPCIONES DISPONIBLES',
+            title: 'اختار الفديو يا عسل💕
+                ',
             sections: videos.map((video) => ({
               title: video.title,
               rows: [
                 {
                   header: video.title,
                   title: video.author.name,
-                  description: 'Descargar MP3',
+                  description: 'صوت🎧',
                   id: `${prefijo}play.1 ${video.url}`
+                },
+                {
+                 header: video.title,
+                  title: video.author.name,
+                  description: 'ملف صوت 🎧',
+                  id: `${prefijo}mp3.2 ${video.url}`
                 },
                 {
                   header: video.title,
                   title: video.author.name,
-                  description: 'Descargar MP4',
+                  description: 'فديو📽',
                   id: `${prefijo}play.2 ${video.url}`
                 }
               ]
